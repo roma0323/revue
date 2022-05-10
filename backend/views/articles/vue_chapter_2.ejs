@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>blog</title>
+    <link href="output.css" rel="stylesheet">
+
+
+</head>
+<body>
+    
+
+
+
+<div id="app" >
+    <div><media_block></media_block></div>
+    
+</div>
+<div id="vif">
+    <transition mode="out-in">
+        <div  class = "block"v-if = "isshoww===true">yes</div>
+    </transition>
+    <button @click = "toggleshow">hide</button>
+</div>
+
+
+
+  
+
+    
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>  
+  const vm = Vue.createApp({
+      data(){
+          return{
+              number:0
+          }
+      }
+  });
+    vm.component('media_block',{
+        template:'<div>不能拿來外面用</div>'
+    });
+    vm.mount('#app');
+
+
+    const iff = Vue.createApp({
+      data(){
+          return{
+              isshoww:true
+          }
+      },
+      methods:{
+        toggleshow(){
+            this.isshoww = this.isshoww ?false:true;
+        }
+      }
+  });
+  iff.mount('#vif');
+
+   
+
+
+   </script>
+
+    <style module>
+       #app {
+            position: relative;
+            display: block;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+        
+        button {
+            font-size: 1rem;
+        }
+        
+        .block {
+            display: block;
+            width: 150px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            
+            
+        }
+        
+        .v-enter-active, .v-leave-active {
+            transition: opacity 2s;
+        }
+        
+        .v-enter-from, .v-leave-to {
+            opacity: 0;
+            background-color: rgb(255, 0, 140);
+        }
+        
+        .v-enter-to, .v-leave-from {
+            opacity: 1;
+            background-color: #0f0;
+        }
+    </style>
+</body>
+</html>
+
+
+
+
+
+
+

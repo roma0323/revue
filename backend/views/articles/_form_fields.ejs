@@ -1,0 +1,26 @@
+
+
+
+    <div class="font-serif drop-shadow-lg w-full h-full flex flex-col justify-between  bg-gray-100  rounded-lg border border-gray-200  px-8 pt-4 pb-3 ">
+
+    <div >
+        <label for="title"class="text-xl">Title</label>
+        <input required type="text" value="<%=article.title %>"name="title" id="title" class=" text-xl  rounded-md w-full h-10  break-words  text-md">
+    </div>
+
+    <div class="mt-2">
+        <label for="description" class="text-xl">description</label>
+        <textarea  type="text" name="description" id="description" class=" rounded-md w-full h-36  break-words  text-md"><%=article.description%></textarea>
+    </div>
+
+    <div  >
+        <label for="markdown"class="text-xl">markdown</label>
+        <textarea required type="text" name="markdown" id="markdown" class=" rounded-md w-full h-8 break-words  text-md"><%=article.markdown%></textarea>
+    </div>
+
+    <div class="flex justify-end mt-3">
+        <button type="submit" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
+        <a href="/index" class="underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">cancel</a>
+    </div>
+    
+    </div>

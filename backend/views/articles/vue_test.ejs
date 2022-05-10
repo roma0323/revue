@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>blog</title>
+    <link href="output.css" rel="stylesheet">
+
+
+</head>
+<body>
+    
+
+
+
+<div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+  <ul>
+    <li v-for="(item, index) in arr">
+      index: {{ index }}, name: {{ item }}
+    </li> 
+  </ul>
+    
+</div>
+
+<div id ="bind" >
+  
+  <p v-bind:id="customId" v-bind:class="bg">...svscs</p>
+  
+</div>
+
+<div id="modell">
+  <div>
+    <input type="radio" id = "one"value= "1" v-model="message">
+  <label for ="one">One</label>
+  </div>
+  <div>
+    <input type="radio" id = "two" value= "5" v-model="message">
+  <label for ="two">two</label>
+  </div>
+  <p >Message is:{{message}}</p>
+</div>
+
+
+  
+
+
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <script>  
+  const vm = Vue.createApp({
+      components:{
+        'my-component':{
+          template:'<div>ohooh</div>',
+      }},
+      data(){
+        return{
+          message:'heeeeeee',
+          price:100,
+          amount:2,
+          arr:['228',518,'isisis'],
+          
+         
+        }
+      },
+      methods:{
+        totalmethod:function(){
+          return 100*100;
+        }
+      },
+      computed:{
+        totalcompute:function(){
+          return 100*100;
+        }
+      }
+
+   });
+    vm.mount('#app');
+   
+    
+
+    const kk = Vue.createApp({
+      data(){
+        return{
+          customId: 'item-id-1',
+          bg:'bg-red-200',
+          
+        }
+      },
+    });
+    kk.mount('#bind');
+
+    const bb = Vue.createApp({
+      data(){
+        return{
+          message:'fffeeeee'
+
+          
+        }
+      },
+    });
+    const bbb = bb.mount('#modell');
+    bbb.$data.message="changeee";
+
+   
+
+
+   </script>
+</body>
+</html>
+
+
+
+
