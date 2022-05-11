@@ -3,9 +3,7 @@
     
     <img alt="Vue logo"  src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <img alt="Vue logo"  src="../assets/logo.png">
     <FooterModule/>
-    <img alt="Vue logo" class="p-12" src="../assets/logo.png">
   </div>
 </template>
 

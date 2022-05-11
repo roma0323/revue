@@ -49,7 +49,9 @@ app.use(methodOverride('_method'))
 
 
 app.get('/test_vue',checkNotAuthenticated,(req,res)=>{
-  res.render('articles/vue_chapter_2.ejs')
+ 
+  res.send({backend:55})
+  
 })
 
 app.get('/index',checkAuthenticated,async(req,res)=>{        
