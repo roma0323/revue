@@ -54,9 +54,10 @@ app.get('/test_vue',checkNotAuthenticated,(req,res)=>{
   
 })
 
-app.get('/index',checkAuthenticated,async(req,res)=>{        
+app.get('/index',async(req,res)=>{    //checkAuthenticated,    
     const articles=await ArticleDb.find().sort({createdAt:'desc'})
-    res.render('articles/index.ejs',{articles:articles,name:req.user.name})       
+    //res.render('articles/index.ejs',{articles:articles,name:req.user.name})  
+    res.send(articles)     
 })
 
 
