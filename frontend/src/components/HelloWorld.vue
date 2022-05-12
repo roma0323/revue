@@ -7,7 +7,8 @@
 </template>
 
 <script>
-
+import postservice from '../postservice'
+postservice.showw();
 export default {
   name: 'HelloWorldddd',
   

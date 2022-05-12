@@ -3,11 +3,14 @@ if (process.env.NODE_ENV !== 'production') {
   }
   //--------//
 const express = require('express')
+const cors = require('cors')
+const body_parser = require('body-parser')
 const mongoose = require('mongoose')
 const ArticleDb = require('./models/article')
 const methodOverride = require('method-override')
 const articleRouter = require('./routes/articles')
 const app = express()
+
 //-------- 
 const bcrypt = require('bcrypt')
 const flash = require('express-flash') 
@@ -28,7 +31,10 @@ mongoose.connect('mongodb://localhost/blog'
 )
 //-------
 app.use(express.static('style'));
-
+app.use(body_parser.json());
+app.use(cors({
+  origin: ['http://localhost:8080'],        //可post的關鍵  但無法redirect
+}))
 
 app.use(flash())
 app.use(session({
