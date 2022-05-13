@@ -27,6 +27,7 @@ export default {
       arrayy:["第一個",5,7]
     }
   },
+  
   mounted(){
   axios.get('http://localhost:5000/test_vue')
   .then(response =>{

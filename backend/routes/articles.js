@@ -26,10 +26,15 @@ router.get('/:id/comments/new',async(req,res) =>{   //article id
     res.render('articles/commentsnew.ejs',{comment:new CommentDb(),article:article})
 })
 
-router.get('/edit/:id',async(req,res) =>{
+/*router.get('/edit/:id',async(req,res) =>{
     const article = await ArticleDb.findById(req.params.id)
 
     res.render('articles/edit.ejs',{article:article})
+})*/
+router.get('/edit/:id',async(req,res)=>{      
+    const articles=await ArticleDb.findById(req.params.id)
+    console.log("acsscascascasccsccc")
+    res.send(articles)     
 })
 
 router.get('/:id/comments/edit',async(req,res) =>{
@@ -115,7 +120,12 @@ router.put('/:id/comments', async (req,res)=>{       //comment 的id
 
 router.delete('/:id',async(req,res)=>{  
     await ArticleDb.findByIdAndDelete(req.params.id)
-    res.redirect('/index')
+    /*res.render('articles/test.ejs',{headers: {
+        "Access-Control-Allow-Origin" : "http://localhost:8080/",}})*/
+    /*res.redirect('back',{headers: {
+        "Access-Control-Allow-Origin" : "http://localhost:8080/",}})*/
+    /*res.location('back',{headers: {
+        "Access-Control-Allow-Origin" : "http://localhost:8080/",}})  */  
 })
 
 router.delete('/:id/comments/delete',async(req,res)=>{    //comment 的id      

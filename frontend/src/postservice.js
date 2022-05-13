@@ -10,8 +10,27 @@ class postservice{
             "Access-Control-Allow-Origin" : "http://localhost:8080/",}}*/
         );
     }
+    static EditArticle(url,article){
+        return axios.put(url,{
+            article
+        },/* {headers: {
+            "Access-Control-Allow-Origin" : "http://localhost:8080/",}}*/
+        );
+    }
     static DeleteArticle(url){
         return axios.delete(url);
+    }
+    static GetArticle(url){
+        var article = []
+        axios.get(url)
+        .then(response =>{
+          console.log(response.data);
+           article = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        return article
     }
     static showw(){
         console.log("acssssssssssscsssssssssssss")

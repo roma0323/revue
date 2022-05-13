@@ -30,28 +30,8 @@
     </div>
 
 </template>
-
 <script>
-// @ is an alias to /src
-
-import postservice from '../postservice'
-import router from '@/router'
 export default {
-  name: 'HomeViewcs',
-   data(){
-    return{
-      article:{title:'',description:'',markdown:'dont need to type'},
-      
-    }
-  }
-  , /*headers: {
-            "Access-Control-Allow-Origin" : "http://localhost:8080/",},*/
-  methods:{
-       createpost(){
-           postservice.PostArticle('http://localhost:5000/articles',this.article)
-           router.push({ path: '/' })   
-      },
-      
-  }
+  name: 'ArticleModel'
 }
 </script>

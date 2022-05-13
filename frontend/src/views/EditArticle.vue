@@ -3,9 +3,9 @@
 
     <div >
         <label for="title" class="text-xl">Title</label>
-        <input required v-model="article.title" type="text" name="title" id="title" class=" text-xl  rounded-md w-full h-10  break-words  text-md">
-        <!--<input required type="text" value="<%=article.title %>" name="title" id="title" class=" text-xl  rounded-md w-full h-10  break-words  text-md">-->
-
+        <input required  v-model="article.title"  type="text" name="title" id="title" class=" text-xl  rounded-md w-full h-10  break-words  text-md">
+        <!--  value ={{ article.title }}  <input required type="text" value="<%=article.title %>" name="title" id="title" class=" text-xl  rounded-md w-full h-10  break-words  text-md">-->
+        
     </div>
 
     <div class="mt-2">
@@ -22,7 +22,7 @@
     <div class="flex justify-end mt-3">
 
         
-            <button v-on:click="createpost" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
+            <button v-on:click="editpost(article._id)" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
         
        <router-link to="/" class="underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">cancel</router-link> 
     </div>
@@ -33,25 +33,38 @@
 
 <script>
 // @ is an alias to /src
-
+import axios from 'axios'
 import postservice from '../postservice'
 import router from '@/router'
 export default {
   name: 'HomeViewcs',
    data(){
     return{
+      
       article:{title:'',description:'',markdown:'dont need to type'},
+      
       
     }
   }
   , /*headers: {
             "Access-Control-Allow-Origin" : "http://localhost:8080/",},*/
   methods:{
-       createpost(){
-           postservice.PostArticle('http://localhost:5000/articles',this.article)
+       editpost(id){
+           postservice.EditArticle(`http://localhost:5000/articles/${id}`,this.article)
            router.push({ path: '/' })   
       },
       
-  }
+  },mounted(){
+  axios.get(`http://localhost:5000/articles/edit/${this.$route.params.id}`)
+  .then(response =>{
+    this.article.title = response.data.title;
+    this.article.description = response.data.description;
+    this.article.markdown = response.data.markdown;
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
 }
 </script>

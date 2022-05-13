@@ -10,7 +10,8 @@
                     <div class=" flex justify-end  ">
                         <span class="px-2 py-1.5 mb-2 rounded-lg bg-gradient-to-b from-teal-100 to-blue-100 	 text-xs ">{{ article.createdAt}}</span><!--<%=article.createdAt.toLocaleDateString()%>-->
                     </div>
-             <button v-on:click="deletearticle(post._id)" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Delete</button>       
+            <router-link :to="`/EditArticle/${article._id}`" class=" m-2 self-center active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">login/out</router-link>
+             <button v-on:click="deletearticle(article._id)" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Delete</button>       
       </div> 
     
   </div>
@@ -22,9 +23,11 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import FooterModule from '@/components/FooterModule.vue'
+import HelloWorld from '../components/HelloWorld.vue'
+import FooterModule from '../components/FooterModule.vue'
 import postservice from '../postservice'
+import axios from 'axios'
+import router from '@/router'
 export default {
   name: 'HomeView',
   components: {
@@ -38,9 +41,11 @@ export default {
     }
   },
   methods:{
-      async deletearticle(id){
-          await postservice.DeleteArticle(`http://localhost:5000/articles/${id}`)
-          //this.posts = await postservice.getArticle()                               refresh
+       deletearticle(id){
+           postservice.DeleteArticle(`http://localhost:5000/articles/${id}`)
+          
+          router.push({ path: '/about' })       
+           
       },
 
   },
@@ -55,5 +60,5 @@ export default {
   });
   },
 }
-import axios from 'axios'
+
 </script>
