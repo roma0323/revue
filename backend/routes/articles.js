@@ -49,7 +49,7 @@ router.get('/:id',async(req,res) =>{          //:slug 不確定的參數
     
 })
 
-router.post('/test', async (req,res,next)=>{
+router.post('/', async (req,res,next)=>{
     req.article = new ArticleDb()
     let article = req.article
         article.title= req.body.article.title
@@ -58,7 +58,7 @@ router.post('/test', async (req,res,next)=>{
         try{
             article = await article.save()
             //res.render('articles/test.ejs')
-            res.redirect('https://www.google.com/')
+            //res.redirect('https://www.google.com/')
             //res.redirect('http://localhost:8080/')
             //res.redirect(`/articles/${article.id}`)
         }catch(e){
@@ -67,10 +67,10 @@ router.post('/test', async (req,res,next)=>{
         }
     console.log(req.body.article.title) 
 })
-router.post('/', async (req,res,next)=>{
+/*router.post('/', async (req,res,next)=>{
     req.article = new ArticleDb()
     next()
-},saveArticleAndRedirect('new'))
+},saveArticleAndRedirect('new'))*/
 
 router.post('/:id/comments', async (req,res)=>{       //article id
         req.article =await ArticleDb.findById(req.params.id)  

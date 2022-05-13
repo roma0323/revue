@@ -20,7 +20,10 @@
     </div>
 
     <div class="flex justify-end mt-3">
-        <button v-on:click="createpost" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
+
+        <router-link to="/">
+            <button v-on:click="createpost" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
+        </router-link> 
        <router-link to="/" class="underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">cancel</router-link> 
     </div>
     
@@ -44,9 +47,8 @@ export default {
             "Access-Control-Allow-Origin" : "http://localhost:8080/",},*/
   methods:{
       async createpost(){
-          await postservice.PostArticle(this.article)
-      }
-
+          await postservice.PostArticle('http://localhost:5000/articles',this.article)
+      },
   }
 }
 </script>
