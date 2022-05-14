@@ -5,19 +5,22 @@
                     
                     <div >
                         <h4 class=" truncate border-b-2 border-gray-300   text-2xl pb-1 mb-2 uppercase">{{ article.title }}</h4>
-                        <p class="h-48 mx-2 mb-2  overflow-hidden break-words  text-md">{{ article.description }}</p>
+                        <p class="h-60 mx-2 mb-2  overflow-hidden break-words  text-md">{{ article.description }}</p>
                     </div>
                     <div class=" flex justify-end  ">
-                        <span class="px-2 py-1.5 mb-2 rounded-lg bg-gradient-to-b from-teal-100 to-blue-100 	 text-xs ">{{ article.createdAt}}</span><!--<%=article.createdAt.toLocaleDateString()%>-->
+                        <span class="px-2 py-1.5 rounded-lg bg-gradient-to-b from-teal-100 to-blue-100 	 text-xs ">{{ article.createdAt}}</span><!--<%=article.createdAt.toLocaleDateString()%>-->
                     </div>
-            <router-link :to="`/EditArticle/${article._id}`" class=" m-2 self-center active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">login/out</router-link>
-             <button v-on:click="deletearticle(article._id)" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Delete</button>       
+                    <div class=" flex justify-end  ">
+                      <router-link :to="`/EditArticle/${article._id}`" class=" m-2 self-center active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">Edit</router-link>
+                       <button v-on:click="deletearticle(article._id)" class="  active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Delete</button>       
+                    </div>
+             
       </div> 
     
   </div>
     
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="yeaaaaa"/>
     <FooterModule/>
 </template>
 

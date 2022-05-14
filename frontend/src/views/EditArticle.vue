@@ -22,7 +22,7 @@
     <div class="flex justify-end mt-3">
 
         
-            <button v-on:click="editpost(article._id)" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
+            <button v-on:click="editpost(this.$route.params.id)" class=" underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-green-500  transition ease-out duration-1000 mr-4 ml-2 self-center " >Save</button>
         
        <router-link to="/" class="underline active:scale-125 hover:underline-offset-4 hover:scale-110 hover:text-yellow-500  transition ease-out duration-300">cancel</router-link> 
     </div>
@@ -41,7 +41,7 @@ export default {
    data(){
     return{
       
-      article:{title:'',description:'',markdown:'dont need to type'},
+      article:{},
       
       
     }
@@ -51,15 +51,15 @@ export default {
   methods:{
        editpost(id){
            postservice.EditArticle(`http://localhost:5000/articles/${id}`,this.article)
-           router.push({ path: '/' })   
+           router.push({ path: '/about' })       
+  
       },
       
   },mounted(){
   axios.get(`http://localhost:5000/articles/edit/${this.$route.params.id}`)
   .then(response =>{
-    this.article.title = response.data.title;
-    this.article.description = response.data.description;
-    this.article.markdown = response.data.markdown;
+    this.article = response.data;
+    
     console.log(response.data);
   })
   .catch(function (error) {
