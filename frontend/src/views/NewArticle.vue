@@ -47,8 +47,9 @@ export default {
   , /*headers: {
             "Access-Control-Allow-Origin" : "http://localhost:8080/",},*/
   methods:{
-       createpost(){
-           postservice.PostArticle('http://localhost:5000/articles',this.article)
+       async createpost (){
+           let resdb = await postservice.PostArticle('http://localhost:5000/articles',this.article)
+           console.log(resdb)
            router.push({ path: '/' })   
       },
       

@@ -54,22 +54,24 @@ router.get('/:id',async(req,res) =>{          //:slug 不確定的參數
     
 })
 
-router.post('/', async (req,res,next)=>{
+router.post('/', async (req,res)=>{
     req.article = new ArticleDb()
     let article = req.article
-        article.title= req.body.article.title
-        article.description= req.body.article.description
-        article.markdown= req.body.article.markdown
-        try{
-            article = await article.save()
-            //res.render('articles/test.ejs')
-            //res.redirect('https://www.google.com/')
-            //res.redirect('http://localhost:8080/')
-            //res.redirect(`/articles/${article.id}`)
-        }catch(e){
-            
-            res.render('articles/test.ejs')
-        }
+    article.title= req.body.article.title
+    article.description= req.body.article.description
+    article.markdown= req.body.article.markdown
+    try{
+        console.log("before save")
+        article = await article.save()
+        console.log("save success")
+        //res.render('articles/test.ejs')
+        //res.redirect('https://www.google.com/')
+        //res.redirect('http://localhost:8080/')
+        //res.redirect(`/articles/${article.id}`)
+        return 123
+    }catch(e){
+        res.render('articles/test.ejs')
+    }
     console.log(req.body.article.title) 
 })
 /*router.post('/', async (req,res,next)=>{
@@ -145,7 +147,7 @@ function saveArticleAndRedirect(path){
         article.markdown= req.body.article.markdown
         try{
             article = await article.save()
-            res.redirect('http://localhost:8080/')
+            //res.redirect('http://localhost:8080/')
             //res.redirect(`/articles/${article.id}`)
         }catch(e){
             res.render(`articles/${path}`.ejs,{article:article})

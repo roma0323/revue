@@ -4,16 +4,15 @@ import axios from 'axios'
 
 class postservice{
     static PostArticle(url,article){
-        return axios.post(url,{
+        axios.post(url,{
             article
-        },/* {headers: {
-            "Access-Control-Allow-Origin" : "http://localhost:8080/",}}*/
-        );
+        }).then(console.log("after postservises"));
+        // return 456
     }
     static EditArticle(url,article){
         return axios.put(url,{
             article
-        },/* {headers: {
+        },/* {headers: {    
             "Access-Control-Allow-Origin" : "http://localhost:8080/",}}*/
         );
     }
@@ -33,7 +32,7 @@ class postservice{
         return article
     }
     static showw(){
-        console.log("acssssssssssscsssssssssssss")
+        // console.log("acssssssssssscsssssssssssss")
     }
 
 }

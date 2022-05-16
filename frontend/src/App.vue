@@ -30,7 +30,7 @@ export default {
   mounted(){
   axios.get('http://localhost:5000/test_vue')
   .then(response =>{
-    console.log(response.data);
+    // console.log(response.data);
      this.User = response.data;
     this.arrayy = [7,7,7];
     

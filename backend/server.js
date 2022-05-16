@@ -35,7 +35,11 @@ app.use(body_parser.json());
 app.use(cors({
   origin: ['http://localhost:8080'],        //可post的關鍵  但無法redirect
 }))
-
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(flash())
 app.use(session({
     secret: process.env.SESSION_SECRET,

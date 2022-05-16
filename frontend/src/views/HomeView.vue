@@ -45,9 +45,9 @@ export default {
   },
   methods:{
        deletearticle(id){
-           postservice.DeleteArticle(`http://localhost:5000/articles/${id}`)
-          
-          router.push({ path: '/about' })       
+          postservice.DeleteArticle(`http://localhost:5000/articles/${id}`)
+          router.push({ path: '/' }) 
+          //router.push({ path: '/about' })       
            
       },
 
@@ -56,7 +56,7 @@ export default {
   axios.get('http://localhost:5000/index')
   .then(response =>{
     this.articles = response.data;
-    console.log(response.data);
+    // console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
